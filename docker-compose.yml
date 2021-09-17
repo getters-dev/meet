@@ -5,11 +5,9 @@ services:
     web:
         image: jitsi/web:stable-6173
         restart: ${RESTART_POLICY}
-        ports:
-            - '${HTTP_PORT}:80'
-            - '${HTTPS_PORT}:443'
         volumes:
             - ${CONFIG}/web:/config:Z
+            - ./app:/usr/share/jitsi-meet
             - ${CONFIG}/transcripts:/usr/share/jitsi-meet/transcripts:Z
         environment:
             - ENABLE_COLIBRI_WEBSOCKET
@@ -107,6 +105,7 @@ services:
             - XMPP_RECORDER_DOMAIN
             - TOKEN_AUTH_URL
         networks:
+            getters_public:
             meet.jitsi:
 
     # XMPP server
@@ -180,6 +179,7 @@ services:
             - TURNS_PORT
             - TZ
         networks:
+            getters_public:
             meet.jitsi:
                 aliases:
                     - ${XMPP_SERVER}
@@ -228,6 +228,7 @@ services:
         depends_on:
             - prosody
         networks:
+            getters_public:
             meet.jitsi:
 
     # Video bridge
@@ -266,6 +267,7 @@ services:
         depends_on:
             - prosody
         networks:
+            getters_public:
             meet.jitsi:
                 aliases:
                     - jvb.meet.jitsi
@@ -273,4 +275,6 @@ services:
 # Custom network so all services can communicate using a FQDN
 networks:
     meet.jitsi:
-    getters-public:
+    getters_public:
+        external:
+            name: getters_public
