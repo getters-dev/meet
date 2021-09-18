@@ -5,9 +5,13 @@ services:
     web:
         image: jitsi/web:stable-6173
         restart: ${RESTART_POLICY}
+        ports:
+            - 80:80
+            - 443:443
         volumes:
             - ${CONFIG}/web:/config:Z
-            - ./app:/usr/share/jitsi-meet
+            - ./app/jitsi-meet:/usr/share/jitsi-meet
+            # - ./app:/app
             - ${CONFIG}/transcripts:/usr/share/jitsi-meet/transcripts:Z
         environment:
             - ENABLE_COLIBRI_WEBSOCKET
