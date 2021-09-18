@@ -47,8 +47,8 @@ consider_bosh_secure = true;
 
   
 
-cross_domain_websocket = { "https://localhost:8443","https://meet.jitsi" }
-cross_domain_bosh = { "https://localhost:8443","https://meet.jitsi" }
+cross_domain_websocket = { "https://meet.getters.app","https://meet.jitsi" }
+cross_domain_bosh = { "https://meet.getters.app","https://meet.jitsi" }
 
 
 VirtualHost "meet.jitsi"

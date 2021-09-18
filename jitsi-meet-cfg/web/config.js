@@ -950,7 +950,7 @@ config.hosts.anonymousdomain = 'guest.meet.jitsi';
 // Domain for authenticated users. Defaults to <domain>.
 config.hosts.authdomain = 'meet.jitsi';
 config.bosh = '/http-bind';
-config.websocket = 'wss://localhost:8443/xmpp-websocket';
+config.websocket = 'wss://meet.getters.app/xmpp-websocket';
 // Video configuration.
 //
 
@@ -1030,13 +1030,13 @@ config.enableCalendarIntegration = false;
 //
 
 // Prejoin page.
-config.prejoinPageEnabled = false;
+config.prejoinPageEnabled = true;
 
 // Welcome page.
 config.enableWelcomePage = true;
 
 // Close page.
-config.enableClosePage = false;
+config.enableClosePage = true;
 
 // Default language.
 // Require users to always specify a display name.
